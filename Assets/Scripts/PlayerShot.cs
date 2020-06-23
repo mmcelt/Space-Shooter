@@ -20,11 +20,12 @@ public class PlayerShot : MonoBehaviour
 
 	void OnTriggerEnter2D(Collider2D other)
 	{
-		if (other.CompareTag(""))
-		{
-
-		}
 		Instantiate(_impactEffect, transform.position, Quaternion.identity);
+
+		if (other.CompareTag("SpaceObject"))
+		{
+			Destroy(other.gameObject);
+		}
 		Destroy(gameObject);
 	}
 
