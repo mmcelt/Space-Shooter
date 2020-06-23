@@ -13,8 +13,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - Player
+  - Player Bullet
   - 
   - 
   - 
@@ -46,6 +46,9 @@ TagManager:
     locked: 0
   - name: Space Objects
     uniqueID: 733579955
+    locked: 0
+  - name: Bullet
+    uniqueID: 3761259349
     locked: 0
   - name: Player
     uniqueID: 427144865

@@ -11,11 +11,6 @@ public class PlayerShot : MonoBehaviour
 	#endregion
 
 	#region MonoBehaviour Methods
-
-	void Start() 
-	{
-		
-	}
 	
 	void Update() 
 	{
@@ -24,13 +19,12 @@ public class PlayerShot : MonoBehaviour
 
 	void OnTriggerEnter2D(Collider2D other)
 	{
-		if (other.CompareTag("Player"))
+		if (other.CompareTag(""))
 		{
 
 		}
 
 		Destroy(gameObject);
-
 	}
 
 	void OnBecameInvisible()
