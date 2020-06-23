@@ -7,7 +7,7 @@ public class PlayerShot : MonoBehaviour
 	#region Fields
 
 	[SerializeField] float _shotSpeed = 7f;
-	[SerializeField] GameObject _impactEffect;
+	[SerializeField] GameObject _impactEffect, _objectExplosion;
 
 	#endregion
 
@@ -24,6 +24,7 @@ public class PlayerShot : MonoBehaviour
 
 		if (other.CompareTag("SpaceObject"))
 		{
+			Instantiate(_objectExplosion, other.transform.position, Quaternion.identity);
 			Destroy(other.gameObject);
 		}
 		Destroy(gameObject);

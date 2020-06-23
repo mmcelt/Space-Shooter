@@ -243,3 +243,5 @@ MonoBehaviour:
   _shotSpeed: 7
   _impactEffect: {fileID: 5912150947286054112, guid: 637094b82db4d4749b08e75c78034ef2,
     type: 3}
+  _objectExplosion: {fileID: 738649183423707362, guid: ee6bb62a99f01a44ea4e9f0fdfc376a0,
+    type: 3}
