@@ -10,6 +10,9 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] Rigidbody2D _theRB;
 	[SerializeField] Transform _lowerLeftLimit, _upperRightLimit, _firePoint;
 	[SerializeField] GameObject _shot;
+	[SerializeField] float _timeBetweenShots = 0.1f;
+
+	float _shotCounter;
 
 	#endregion
 
@@ -30,6 +33,17 @@ public class PlayerController : MonoBehaviour
 		if (Input.GetButtonDown("Fire1"))
 		{
 			Instantiate(_shot, _firePoint.position, _firePoint.rotation);
+			_shotCounter = _timeBetweenShots;
+		}
+
+		if (Input.GetButton("Fire1"))
+		{
+			_shotCounter -= Time.deltaTime;
+			if (_shotCounter <= 0)
+			{
+				Instantiate(_shot, _firePoint.position, _firePoint.rotation);
+				_shotCounter = _timeBetweenShots;
+			}
 		}
 	}
 	#endregion

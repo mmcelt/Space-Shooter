@@ -245,6 +245,7 @@ MonoBehaviour:
   _upperRightLimit: {fileID: 193201411}
   _firePoint: {fileID: 1181418994}
   _shot: {fileID: 6807426531666712309, guid: c322bf044c7a8c64190c6406dd138ae8, type: 3}
+  _timeBetweenShots: 0.2
 --- !u!58 &31500236
 CircleCollider2D:
   m_ObjectHideFlags: 0
