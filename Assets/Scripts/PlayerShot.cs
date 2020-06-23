@@ -7,6 +7,7 @@ public class PlayerShot : MonoBehaviour
 	#region Fields
 
 	[SerializeField] float _shotSpeed = 7f;
+	[SerializeField] GameObject _impactEffect;
 
 	#endregion
 
@@ -23,7 +24,7 @@ public class PlayerShot : MonoBehaviour
 		{
 
 		}
-
+		Instantiate(_impactEffect, transform.position, Quaternion.identity);
 		Destroy(gameObject);
 	}
 
