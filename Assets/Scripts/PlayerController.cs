@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
 
 	[SerializeField] float _moveSpeed;
 	[SerializeField] Rigidbody2D _theRB;
+	[SerializeField] Transform _lowerLeftLimit, _upperRightLimit;
 
 	#endregion
 
@@ -21,6 +22,8 @@ public class PlayerController : MonoBehaviour
 	void Update() 
 	{
 		_theRB.velocity = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")) * _moveSpeed;
+
+		transform.position = new Vector3(Mathf.Clamp(transform.position.x, _lowerLeftLimit.position.x, _upperRightLimit.position.x), Mathf.Clamp(transform.position.y, _lowerLeftLimit.position.y, _upperRightLimit.position.y), transform.position.z);
 	}
 	#endregion
 
