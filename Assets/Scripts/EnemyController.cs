@@ -12,6 +12,14 @@ public class EnemyController : MonoBehaviour
 	[SerializeField] bool _shouldChangeDirection;
 	[SerializeField] float _changeDirectionXPoint;
 	[SerializeField] Vector2 _changedDirection;
+	[Header("Shooting")]
+	[SerializeField] bool _canShoot;
+	[SerializeField] GameObject _bullet;
+	[SerializeField] Transform _firePoint;
+	[SerializeField] float _timeBetweenShots;
+
+	float _shotCounter;
+	bool _allowShooting;
 
 	#endregion
 
@@ -19,7 +27,7 @@ public class EnemyController : MonoBehaviour
 
 	void Start() 
 	{
-		
+		_shotCounter = _timeBetweenShots;
 	}
 
 	void Update()
@@ -40,11 +48,27 @@ public class EnemyController : MonoBehaviour
 				transform.position += new Vector3(_changedDirection.x, _changedDirection.y) * _moveSpeed * Time.deltaTime;
 			}
 		}
+		//shooting...
+		if (_allowShooting)
+		{
+			_shotCounter -= Time.deltaTime;
+			if (_shotCounter <= 0)
+			{
+				_shotCounter = _timeBetweenShots;
+				Instantiate(_bullet, _firePoint.position, _firePoint.rotation);
+			}
+		}
 	}
 
 	void OnBecameInvisible()
 	{
 		Destroy(gameObject);
+	}
+
+	void OnBecameVisible()
+	{
+		if(_canShoot)
+			_allowShooting = true;
 	}
 	#endregion
 

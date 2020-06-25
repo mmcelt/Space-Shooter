@@ -128,6 +128,10 @@ MonoBehaviour:
   _shouldChangeDirection: 1
   _changeDirectionXPoint: 1.5
   _changedDirection: {x: -0.75, y: -0.5}
+  _canShoot: 1
+  _bullet: {fileID: 2515719464912501051, guid: 51ceb82ccfbf4a544b2ae9c7ebcc342f, type: 3}
+  _firePoint: {fileID: 519474842199196414}
+  _timeBetweenShots: 0.5
 --- !u!114 &519474841462764427
 MonoBehaviour:
   m_ObjectHideFlags: 0
