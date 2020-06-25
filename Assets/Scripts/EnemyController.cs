@@ -17,6 +17,9 @@ public class EnemyController : MonoBehaviour
 	[SerializeField] GameObject _bullet;
 	[SerializeField] Transform _firePoint;
 	[SerializeField] float _timeBetweenShots;
+	[Header("Health")]
+	public int _currentHealth;
+	public GameObject _deathFX;
 
 	float _shotCounter;
 	bool _allowShooting;
@@ -74,7 +77,17 @@ public class EnemyController : MonoBehaviour
 
 	#region Public Methods
 
+	public void DamageEnemy(int damageAmount = 1)
+	{
+		_currentHealth -= damageAmount;
+		_currentHealth = Mathf.Max(0, _currentHealth);
 
+		if (_currentHealth == 0)
+		{
+			Instantiate(_deathFX, transform.position, Quaternion.identity);
+			Destroy(gameObject);
+		}
+	}
 	#endregion
 
 	#region Private Methods

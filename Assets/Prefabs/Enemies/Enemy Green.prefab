@@ -131,7 +131,10 @@ MonoBehaviour:
   _canShoot: 1
   _bullet: {fileID: 2515719464912501051, guid: 51ceb82ccfbf4a544b2ae9c7ebcc342f, type: 3}
   _firePoint: {fileID: 519474842199196414}
-  _timeBetweenShots: 0.5
+  _timeBetweenShots: 0.75
+  _currentHealth: 3
+  _deathFX: {fileID: 1528547070963676133, guid: 9fa13ef500d8fe947a02db4266c06ae9,
+    type: 3}
 --- !u!114 &519474841462764427
 MonoBehaviour:
   m_ObjectHideFlags: 0

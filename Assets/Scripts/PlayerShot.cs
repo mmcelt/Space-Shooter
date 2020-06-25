@@ -8,6 +8,7 @@ public class PlayerShot : MonoBehaviour
 
 	[SerializeField] float _shotSpeed = 7f;
 	[SerializeField] GameObject _impactEffect, _objectExplosion;
+	[SerializeField] int _damageToInflict = 1;
 
 	#endregion
 
@@ -27,6 +28,11 @@ public class PlayerShot : MonoBehaviour
 			Instantiate(_objectExplosion, other.transform.position, Quaternion.identity);
 			Destroy(other.gameObject);
 		}
+		if (other.CompareTag("Enemy"))
+		{
+			other.GetComponent<EnemyController>().DamageEnemy(_damageToInflict);
+		}
+
 		Destroy(gameObject);
 	}
 
