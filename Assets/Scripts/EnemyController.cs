@@ -52,7 +52,7 @@ public class EnemyController : MonoBehaviour
 			}
 		}
 		//shooting...
-		if (_allowShooting)
+		if (_allowShooting && transform.position.x >= -8f)
 		{
 			_shotCounter -= Time.deltaTime;
 			if (_shotCounter <= 0)
