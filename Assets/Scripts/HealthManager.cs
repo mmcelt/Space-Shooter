@@ -11,6 +11,10 @@ public class HealthManager : MonoBehaviour
 
 	[SerializeField] int _currentHealth, _maxHealth;
 	[SerializeField] GameObject _deathEffect;
+	[SerializeField] float _invincibleLength = 2f;
+	[SerializeField] SpriteRenderer _theSprite;
+
+	float _invincibleCounter;
 
 	#endregion
 
@@ -31,7 +35,15 @@ public class HealthManager : MonoBehaviour
 	
 	void Update() 
 	{
-		
+		if (_invincibleCounter >= 0)
+		{
+			_invincibleCounter -= Time.deltaTime;
+
+			if (_invincibleCounter <= 0)
+			{
+				_theSprite.color = new Color(_theSprite.color.r, _theSprite.color.g, _theSprite.color.b, 1.0f);
+			}
+		}
 	}
 	#endregion
 
@@ -39,6 +51,8 @@ public class HealthManager : MonoBehaviour
 
 	public void DamagePlayer(int amount = 1)
 	{
+		if (_invincibleCounter > 0) return;
+
 		_currentHealth -= amount;
 		_currentHealth = Mathf.Max(0, _currentHealth);
 
@@ -56,6 +70,8 @@ public class HealthManager : MonoBehaviour
 	{
 		gameObject.SetActive(true);
 		_currentHealth = _maxHealth;
+		_invincibleCounter = _invincibleLength;
+		_theSprite.color = new Color(_theSprite.color.r, _theSprite.color.g, _theSprite.color.b, 0.5f);
 	}
 	#endregion
 
