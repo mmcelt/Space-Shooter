@@ -40,7 +40,9 @@ public class GameManager : MonoBehaviour
 		else
 		{
 			//game over code...
-
+			UIManager.Instance._gameOverScreen.SetActive(true);
+			WaveManager.Instance._canSpawnWaves = false;
+			ClearAllVisibleEnemies();
 		}
 	}
 	#endregion
@@ -53,6 +55,12 @@ public class GameManager : MonoBehaviour
 		//respawn player...
 		HealthManager.Instance.RespawnPlayer();
 		WaveManager.Instance.ContinueSpawning();
+	}
+	void ClearAllVisibleEnemies()
+	{
+		GameObject[] visibleEnemies = GameObject.FindGameObjectsWithTag("Enemy");
+		foreach (GameObject enemy in visibleEnemies)
+			enemy.SetActive(false);
 	}
 	#endregion
 }
