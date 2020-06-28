@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: -2511178492372180127}
   m_Layer: 0
   m_Name: Enemy Orange
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -155,9 +155,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _moveSpeed: 3
   _startDirection: {x: -1, y: 0}
-  _shouldChangeDirection: 0
-  _changeDirectionXPoint: 0
-  _changedDirection: {x: 0, y: 0}
+  _shouldChangeDirection: 1
+  _changeDirectionXPoint: 3
+  _changedDirection: {x: -0.8, y: 0.5}
   _canShoot: 1
   _bullet: {fileID: 2515719464912501051, guid: 51ceb82ccfbf4a544b2ae9c7ebcc342f, type: 3}
   _firePoint: {fileID: 5768781746336571301}
