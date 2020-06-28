@@ -13,7 +13,7 @@ public class WaveManager : MonoBehaviour
 	public int _currentWave;
 	public float _timeToNextWave;
 
-	bool _canSpawnWaves;
+	public bool _canSpawnWaves;
 
 	#endregion
 
@@ -59,7 +59,13 @@ public class WaveManager : MonoBehaviour
 
 	#region Public Methods
 
-
+	public void ContinueSpawning()
+	{
+		if (_currentWave < _waves.Length - 1 && _timeToNextWave > 0)
+		{
+			_canSpawnWaves = true;
+		}
+	}
 	#endregion
 
 	#region Private Methods
