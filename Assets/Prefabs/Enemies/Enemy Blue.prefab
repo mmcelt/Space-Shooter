@@ -132,7 +132,7 @@ MonoBehaviour:
   _bullet: {fileID: 3474489927354242458, guid: 12770673a2d133b4fbe3b07b29e43b4a, type: 3}
   _firePoint: {fileID: 3398512580059819935}
   _timeBetweenShots: 1
-  _currentHealth: 2
+  _currentHealth: 1
   _deathFX: {fileID: 1528547070963676133, guid: 9fa13ef500d8fe947a02db4266c06ae9,
     type: 3}
 --- !u!114 &2450421328587608923
