@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class UIManager : MonoBehaviour
 	public static UIManager Instance;
 
 	public GameObject _gameOverScreen;
+	public Text _livesText;
+
 	[SerializeField] string _mainMenuScene;
 
 	#endregion

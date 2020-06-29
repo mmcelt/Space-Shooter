@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
 	{
 		_currentLives--;
 		_currentLives = Mathf.Max(0, _currentLives);
+		UIManager.Instance._livesText.text = "X " + _currentLives;
 
 		if (_currentLives > 0)
 		{

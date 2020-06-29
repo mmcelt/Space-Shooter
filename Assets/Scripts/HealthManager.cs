@@ -31,8 +31,9 @@ public class HealthManager : MonoBehaviour
 	void Start() 
 	{
 		_currentHealth = _maxHealth;
+		UIManager.Instance._livesText.text = "X " + GameManager.Instance._currentLives;
 	}
-	
+
 	void Update() 
 	{
 		if (_invincibleCounter >= 0)
