@@ -32,6 +32,8 @@ public class HealthManager : MonoBehaviour
 	{
 		_currentHealth = _maxHealth;
 		UIManager.Instance._livesText.text = "X " + GameManager.Instance._currentLives;
+		UIManager.Instance._healthbar.maxValue = _maxHealth;
+		UIManager.Instance._healthbar.value = _currentHealth;
 	}
 
 	void Update() 
@@ -57,6 +59,8 @@ public class HealthManager : MonoBehaviour
 		_currentHealth -= amount;
 		_currentHealth = Mathf.Max(0, _currentHealth);
 
+		UIManager.Instance._healthbar.value = _currentHealth;
+
 		if (_currentHealth == 0)
 		{
 			Instantiate(_deathEffect, transform.position, Quaternion.identity);
@@ -71,6 +75,9 @@ public class HealthManager : MonoBehaviour
 	{
 		gameObject.SetActive(true);
 		_currentHealth = _maxHealth;
+
+		UIManager.Instance._healthbar.value = _currentHealth;
+
 		_invincibleCounter = _invincibleLength;
 		_theSprite.color = new Color(_theSprite.color.r, _theSprite.color.g, _theSprite.color.b, 0.5f);
 	}

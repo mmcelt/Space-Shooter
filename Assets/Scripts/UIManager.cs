@@ -12,6 +12,7 @@ public class UIManager : MonoBehaviour
 
 	public GameObject _gameOverScreen;
 	public Text _livesText;
+	public Slider _healthbar;
 
 	[SerializeField] string _mainMenuScene;
 
