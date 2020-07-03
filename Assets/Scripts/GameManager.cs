@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
 
 	[SerializeField] float _respawnTime = 2f;
 
+	int _highScore;
+
 	#endregion
 
 	#region MonoBehaviour Methods
@@ -28,6 +30,9 @@ public class GameManager : MonoBehaviour
 	void Start()
 	{
 		UIManager.Instance._scoreText.text = "Score: " + _currentScore;
+		//_highScore = PlayerPrefs.GetInt("HighScore");
+		//UIManager.Instance._highScoreText.text = "Hi-Score: " + _highScore;
+		UIManager.Instance._highScoreText.text = "Hi-Score: " + PlayerPrefs.GetInt("HighScore");
 	}
 	#endregion
 
@@ -57,6 +62,12 @@ public class GameManager : MonoBehaviour
 	{
 		_currentScore += amount;
 		UIManager.Instance._scoreText.text = "Score: " + _currentScore;
+		if (_currentScore > _highScore)
+		{
+			_highScore = _currentScore;
+			UIManager.Instance._highScoreText.text = "Hi-Score: " + _highScore;
+			PlayerPrefs.SetInt("HighScore", _highScore);
+		}
 	}
 	#endregion
 
