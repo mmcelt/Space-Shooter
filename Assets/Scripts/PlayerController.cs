@@ -6,18 +6,34 @@ public class PlayerController : MonoBehaviour
 {
 	#region Fields
 
-	[SerializeField] float _moveSpeed;
+	public static PlayerController Instance;
+
+	[SerializeField] float _moveSpeed, _boostSpeed;
 	[SerializeField] Rigidbody2D _theRB;
 	[SerializeField] Transform _lowerLeftLimit, _upperRightLimit, _firePoint;
 	[SerializeField] GameObject _shot;
 	[SerializeField] float _timeBetweenShots = 0.1f;
+	[SerializeField] float _boostLength;
 
-	float _shotCounter;
+	float _shotCounter, _normalSpeed, _boostCounter;
 
 	#endregion
 
 	#region MonoBehaviour Methods
-	
+
+	void Awake()
+	{
+		if (Instance == null)
+			Instance = this;
+		else if (Instance != this)
+			Destroy(gameObject);
+	}
+
+	void Start()
+	{
+		_normalSpeed = _moveSpeed;
+	}
+
 	void Update() 
 	{
 		_theRB.velocity = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")) * _moveSpeed;
@@ -40,12 +56,25 @@ public class PlayerController : MonoBehaviour
 				_shotCounter = _timeBetweenShots;
 			}
 		}
+
+		if (_boostCounter > 0)
+		{
+			_boostCounter -= Time.deltaTime;
+			if (_boostCounter <= 0)
+			{
+				_moveSpeed = _normalSpeed;
+			}
+		}
 	}
 	#endregion
 
 	#region Public Methods
 
-
+	public void ActivateSpeedBoost()
+	{
+		_boostCounter = _boostLength;
+		_moveSpeed = _boostSpeed;
+	}
 	#endregion
 
 	#region Private Methods
