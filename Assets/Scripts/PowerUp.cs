@@ -6,7 +6,7 @@ public class PowerUp : MonoBehaviour
 {
 	#region Fields
 
-	[SerializeField] bool _isShield, _isBoost;
+	[SerializeField] bool _isShield, _isBoost, _isDoubleShot;
 
 	#endregion
 
@@ -23,6 +23,10 @@ public class PowerUp : MonoBehaviour
 			if (_isBoost)
 			{
 				PlayerController.Instance.ActivateSpeedBoost();
+			}
+			if (_isDoubleShot)
+			{
+				PlayerController.Instance._doubleShotActive = true;
 			}
 
 			Destroy(gameObject);
