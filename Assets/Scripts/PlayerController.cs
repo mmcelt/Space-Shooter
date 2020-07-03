@@ -17,11 +17,6 @@ public class PlayerController : MonoBehaviour
 	#endregion
 
 	#region MonoBehaviour Methods
-
-	void Start() 
-	{
-		
-	}
 	
 	void Update() 
 	{

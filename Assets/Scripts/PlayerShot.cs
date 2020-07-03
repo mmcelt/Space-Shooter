@@ -25,6 +25,7 @@ public class PlayerShot : MonoBehaviour
 
 		if (other.CompareTag("SpaceObject"))
 		{
+			GameManager.Instance.UpdateScore(50);
 			Instantiate(_objectExplosion, other.transform.position, Quaternion.identity);
 			Destroy(other.gameObject);
 		}

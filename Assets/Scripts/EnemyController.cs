@@ -18,7 +18,7 @@ public class EnemyController : MonoBehaviour
 	[SerializeField] Transform _firePoint;
 	[SerializeField] float _timeBetweenShots;
 	[Header("Health")]
-	public int _currentHealth;
+	public int _currentHealth, _scoreValue = 100;
 	public GameObject _deathFX;
 
 	float _shotCounter;
@@ -84,6 +84,7 @@ public class EnemyController : MonoBehaviour
 
 		if (_currentHealth == 0)
 		{
+			GameManager.Instance.UpdateScore(_scoreValue);
 			Instantiate(_deathFX, transform.position, Quaternion.identity);
 			Destroy(gameObject);
 		}

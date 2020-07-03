@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 	public static GameManager Instance;
 
 	public int _currentLives = 3;
+	public int _currentScore;
 
 	[SerializeField] float _respawnTime = 2f;
 
@@ -22,6 +23,11 @@ public class GameManager : MonoBehaviour
 			Instance = this;
 		else if (Instance != this)
 			Destroy(gameObject);
+	}
+
+	void Start()
+	{
+		UIManager.Instance._scoreText.text = "Score: " + _currentScore;
 	}
 	#endregion
 
@@ -45,6 +51,12 @@ public class GameManager : MonoBehaviour
 			WaveManager.Instance._canSpawnWaves = false;
 			ClearAllVisibleEnemies();
 		}
+	}
+
+	public void UpdateScore(int amount)
+	{
+		_currentScore += amount;
+		UIManager.Instance._scoreText.text = "Score: " + _currentScore;
 	}
 	#endregion
 
