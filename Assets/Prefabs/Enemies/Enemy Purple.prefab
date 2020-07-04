@@ -163,8 +163,14 @@ MonoBehaviour:
   _firePoint: {fileID: 5771858613387777822}
   _timeBetweenShots: 0.75
   _currentHealth: 1
+  _scoreValue: 100
   _deathFX: {fileID: 1528547070963676133, guid: 9fa13ef500d8fe947a02db4266c06ae9,
     type: 3}
+  _powerUps:
+  - {fileID: 3981561192197501708, guid: dbcfbc2585c52c742ac2fb0e351f9645, type: 3}
+  - {fileID: 5182292703197838593, guid: 40ee1d5bb8ee7bd47aa27e7f9bc74879, type: 3}
+  - {fileID: 1338235422039417314, guid: 379b8caf165a3684f806bfcab17623e2, type: 3}
+  _dropSuccessRate: 20
 --- !u!114 &6715314323837283290
 MonoBehaviour:
   m_ObjectHideFlags: 0

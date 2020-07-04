@@ -20,6 +20,9 @@ public class EnemyController : MonoBehaviour
 	[Header("Health")]
 	public int _currentHealth, _scoreValue = 100;
 	public GameObject _deathFX;
+	[Header("Power Ups")]
+	[SerializeField] GameObject[] _powerUps;
+	[SerializeField] int _dropSuccessRate = 15;
 
 	float _shotCounter;
 	bool _allowShooting;
@@ -85,7 +88,19 @@ public class EnemyController : MonoBehaviour
 		if (_currentHealth == 0)
 		{
 			GameManager.Instance.UpdateScore(_scoreValue);
+
+			int randomChance = Random.Range(0, 101);
+
+			if (randomChance < _dropSuccessRate)
+			{
+				int selectedPowerUp = Random.Range(0, _powerUps.Length);
+
+				if (selectedPowerUp >= 0 && selectedPowerUp < _powerUps.Length)
+					Instantiate(_powerUps[selectedPowerUp], transform.position, Quaternion.identity);
+			}
+
 			Instantiate(_deathFX, transform.position, Quaternion.identity);
+
 			Destroy(gameObject);
 		}
 	}
