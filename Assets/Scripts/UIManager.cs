@@ -10,7 +10,7 @@ public class UIManager : MonoBehaviour
 
 	public static UIManager Instance;
 
-	public GameObject _gameOverScreen;
+	public GameObject _gameOverScreen, _levelEndScreen;
 	public Text _livesText, _scoreText, _highScoreText;
 	public Slider _healthbar, _shieldbar;
 
