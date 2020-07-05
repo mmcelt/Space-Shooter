@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
 
 	public int _currentLives = 3;
 	public int _currentScore;
+	public bool _levelEnding;
 
 	[SerializeField] float _respawnTime = 2f;
 
@@ -33,6 +34,14 @@ public class GameManager : MonoBehaviour
 		//_highScore = PlayerPrefs.GetInt("HighScore");
 		//UIManager.Instance._highScoreText.text = "Hi-Score: " + _highScore;
 		UIManager.Instance._highScoreText.text = "Hi-Score: " + PlayerPrefs.GetInt("HighScore");
+	}
+
+	void Update()
+	{
+		if (_levelEnding)
+		{
+			PlayerController.Instance.transform.position += new Vector3(PlayerController.Instance._boostSpeed * Time.deltaTime, 0f, 0f);
+		}
 	}
 	#endregion
 
@@ -74,7 +83,11 @@ public class GameManager : MonoBehaviour
 	public IEnumerator EndLevelRoutine()
 	{
 		UIManager.Instance._levelEndScreen.SetActive(true);
-		yield return null;
+		PlayerController.Instance._stopMovement = true;
+		_levelEnding = true;
+		MusicController.Instance.PlayVictoryMusic();
+
+		yield return new WaitForSeconds(0.5f);
 	}
 	#endregion
 
