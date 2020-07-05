@@ -54,6 +54,7 @@ public class GameManager : MonoBehaviour
 			//game over code...
 			UIManager.Instance._gameOverScreen.SetActive(true);
 			WaveManager.Instance._canSpawnWaves = false;
+			MusicController.Instance.PlayGameOverMusic();
 			ClearAllVisibleEnemies();
 		}
 	}
