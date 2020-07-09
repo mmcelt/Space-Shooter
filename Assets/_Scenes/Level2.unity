@@ -1207,7 +1207,7 @@ MonoBehaviour:
   _levelEnding: 0
   _respawnTime: 2
   _waitToLoadNextLevel: 2.5
-  _nextLevel: Level2
+  _nextLevel: Level1
 --- !u!4 &453649421
 Transform:
   m_ObjectHideFlags: 0
@@ -2934,7 +2934,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1344150590
 Transform:
   m_ObjectHideFlags: 0
@@ -3793,6 +3793,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: End Wave
+      objectReference: {fileID: 0}
+    - target: {fileID: 4236637198854966436, guid: 75c440ad25b610048ab4b91e43d5050e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4636109116048694009, guid: 75c440ad25b610048ab4b91e43d5050e,
         type: 3}

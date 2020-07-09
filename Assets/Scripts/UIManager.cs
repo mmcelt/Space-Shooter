@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -10,10 +11,10 @@ public class UIManager : MonoBehaviour
 
 	public static UIManager Instance;
 
-	public GameObject _gameOverScreen, _levelEndScreen;
+	public GameObject _gameOverScreen, _levelEndScreen, _highScoreNotice;
 	public Text _livesText, _scoreText, _highScoreText;
 	public Slider _healthbar, _shieldbar;
-
+	public TextMeshProUGUI _levelScoreText, _totalScoreText;
 	[SerializeField] string _mainMenuScene;
 
 	#endregion
