@@ -11,7 +11,7 @@ public class UIManager : MonoBehaviour
 
 	public static UIManager Instance;
 
-	public GameObject _gameOverScreen, _levelEndScreen, _highScoreNotice;
+	public GameObject _gameOverScreen, _levelEndScreen, _highScoreNotice, _pauseScreen;
 	public Text _livesText, _scoreText, _highScoreText;
 	public Slider _healthbar, _shieldbar;
 	public TextMeshProUGUI _levelScoreText, _totalScoreText;
@@ -40,11 +40,18 @@ public class UIManager : MonoBehaviour
 	public void OnRestartButtonClicked()
 	{
 		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+		Time.timeScale = 1f;
 	}
 
 	public void OnMainMenuButtonClicked()
 	{
 		Debug.Log("Back to Main Menu...");
+		Time.timeScale = 1f;
+	}
+
+	public void OnResumeButtonClicked()
+	{
+		GameManager.Instance.PauseUnpause();
 	}
 	#endregion
 
