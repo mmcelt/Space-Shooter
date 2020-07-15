@@ -33,6 +33,10 @@ public class PlayerShot : MonoBehaviour
 		{
 			other.GetComponent<EnemyController>().DamageEnemy(_damageToInflict);
 		}
+		if (other.CompareTag("Boss"))
+		{
+			BossManager.Instance.HurtBoss(_damageToInflict);
+		}
 
 		Destroy(gameObject);
 	}
