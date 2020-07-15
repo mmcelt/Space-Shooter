@@ -35,23 +35,24 @@ public class WaveManager : MonoBehaviour
 
 	void Update()
 	{
-		if (!_canSpawnWaves) return;
-
-		_timeToNextWave -= Time.deltaTime;
-		if (_timeToNextWave <= 0)
+		if (_canSpawnWaves)
 		{
-			Instantiate(_waves[_currentWave]._theWave, transform.position, Quaternion.identity);
+			_timeToNextWave -= Time.deltaTime;
+			if (_timeToNextWave <= 0)
+			{
+				Instantiate(_waves[_currentWave]._theWave, transform.position, Quaternion.identity);
 
-			if (_currentWave < _waves.Length - 1)
-			{
-				_currentWave++;
-				_timeToNextWave = _waves[_currentWave]._timeToSpawn;
-			}
-			else
-			{
-				//end of level?
-				_canSpawnWaves = false;
-				Debug.Log("Out of Waves!");
+				if (_currentWave < _waves.Length - 1)
+				{
+					_currentWave++;
+					_timeToNextWave = _waves[_currentWave]._timeToSpawn;
+				}
+				else
+				{
+					//end of level?
+					_canSpawnWaves = false;
+					Debug.Log("Out of Waves!");
+				}
 			}
 		}
 	}
