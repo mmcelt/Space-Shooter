@@ -45,7 +45,7 @@ public class UIManager : MonoBehaviour
 
 	public void OnMainMenuButtonClicked()
 	{
-		Debug.Log("Back to Main Menu...");
+		SceneManager.LoadScene(_mainMenuScene);
 		Time.timeScale = 1f;
 	}
 

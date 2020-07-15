@@ -1521,7 +1521,7 @@ MonoBehaviour:
   _shieldbar: {fileID: 2711611179838253588}
   _levelScoreText: {fileID: 2711611180420610992}
   _totalScoreText: {fileID: 2711611180098252240}
-  _mainMenuScene: 
+  _mainMenuScene: MainMenu
 --- !u!1 &2711611179536097691
 GameObject:
   m_ObjectHideFlags: 0
