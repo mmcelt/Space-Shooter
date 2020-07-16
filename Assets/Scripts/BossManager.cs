@@ -8,7 +8,8 @@ public class BossManager : MonoBehaviour
 
 	public static BossManager Instance;
 
-	public int _currentHealth = 100;
+	[SerializeField] int _currentHealth = 100;
+	[SerializeField] string _bossName;
 
 	#endregion
 
@@ -24,14 +25,11 @@ public class BossManager : MonoBehaviour
 
 	void Start() 
 	{
-		
+		UIManager.Instance._bossHealthbar.maxValue = _currentHealth;
+		UIManager.Instance._bossHealthbar.value = _currentHealth;
+		UIManager.Instance._bossNameText.text = _bossName;
+		UIManager.Instance._bossHealthbar.gameObject.SetActive(true);
 	}
-	
-	void Update() 
-	{
-		
-	}
-
 
 	#endregion
 
@@ -41,10 +39,12 @@ public class BossManager : MonoBehaviour
 	{
 		_currentHealth -= damageAmount;
 		_currentHealth = Mathf.Max(0, _currentHealth);
+		UIManager.Instance._bossHealthbar.value = _currentHealth;
 
 		if (_currentHealth == 0)
 		{
 			Destroy(gameObject);
+			UIManager.Instance._bossHealthbar.gameObject.SetActive(false);
 		}
 	}
 	#endregion

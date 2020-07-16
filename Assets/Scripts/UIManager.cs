@@ -12,8 +12,8 @@ public class UIManager : MonoBehaviour
 	public static UIManager Instance;
 
 	public GameObject _gameOverScreen, _levelEndScreen, _highScoreNotice, _pauseScreen;
-	public Text _livesText, _scoreText, _highScoreText;
-	public Slider _healthbar, _shieldbar;
+	public Text _livesText, _scoreText, _highScoreText, _bossNameText;
+	public Slider _healthbar, _shieldbar, _bossHealthbar;
 	public TextMeshProUGUI _levelScoreText, _totalScoreText;
 	[SerializeField] string _mainMenuScene;
 
