@@ -10,6 +10,7 @@ public class BossManager : MonoBehaviour
 
 	[SerializeField] int _currentHealth = 100;
 	[SerializeField] string _bossName;
+	[SerializeField] BattleShot[] _shotsToFire;
 
 	#endregion
 
@@ -29,8 +30,22 @@ public class BossManager : MonoBehaviour
 		UIManager.Instance._bossHealthbar.value = _currentHealth;
 		UIManager.Instance._bossNameText.text = _bossName;
 		UIManager.Instance._bossHealthbar.gameObject.SetActive(true);
+		MusicController.Instance.PlayBossMusic();
 	}
 
+	void Update()
+	{
+		for(int i=0; i<_shotsToFire.Length; i++)
+		{
+			_shotsToFire[i]._shotCounter -= Time.deltaTime;
+
+			if (_shotsToFire[i]._shotCounter <= 0)
+			{
+				_shotsToFire[i]._shotCounter = _shotsToFire[i]._timeBetweenShots;
+				Instantiate(_shotsToFire[i]._theShot, _shotsToFire[i]._firePoint.position, _shotsToFire[i]._firePoint.rotation);
+			}
+		}
+	}
 	#endregion
 
 	#region Public Methods
@@ -51,6 +66,17 @@ public class BossManager : MonoBehaviour
 
 	#region Private Methods
 
+	void FireShot()
+	{
 
+	}
 	#endregion
+}
+
+[System.Serializable]
+public class BattleShot
+{
+	public GameObject _theShot;
+	public float _timeBetweenShots, _shotCounter;
+	public Transform _firePoint;
 }
