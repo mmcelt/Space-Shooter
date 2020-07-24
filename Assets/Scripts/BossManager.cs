@@ -10,7 +10,12 @@ public class BossManager : MonoBehaviour
 
 	[SerializeField] int _currentHealth = 100;
 	[SerializeField] string _bossName;
-	[SerializeField] BattleShot[] _shotsToFire;
+	//SerializeField] BattleShot[] _shotsToFire;
+	[SerializeField] BattlePhase[] _phases;
+
+	[SerializeField] int _currentPhase;
+
+	[SerializeField] Animator _bossAnim;
 
 	#endregion
 
@@ -35,15 +40,20 @@ public class BossManager : MonoBehaviour
 
 	void Update()
 	{
-		for(int i=0; i<_shotsToFire.Length; i++)
-		{
-			_shotsToFire[i]._shotCounter -= Time.deltaTime;
+		//for(int i=0; i<_shotsToFire.Length; i++)
+		//{
+		//	_shotsToFire[i]._shotCounter -= Time.deltaTime;
 
-			if (_shotsToFire[i]._shotCounter <= 0)
-			{
-				_shotsToFire[i]._shotCounter = _shotsToFire[i]._timeBetweenShots;
-				Instantiate(_shotsToFire[i]._theShot, _shotsToFire[i]._firePoint.position, _shotsToFire[i]._firePoint.rotation);
-			}
+		//	if (_shotsToFire[i]._shotCounter <= 0)
+		//	{
+		//		_shotsToFire[i]._shotCounter = _shotsToFire[i]._timeBetweenShots;
+		//		Instantiate(_shotsToFire[i]._theShot, _shotsToFire[i]._firePoint.position, _shotsToFire[i]._firePoint.rotation);
+		//	}
+		//}
+
+		if(_currentHealth<= _phases[_currentPhase]._healthToEndPhase)
+		{
+
 		}
 	}
 	#endregion
@@ -79,4 +89,13 @@ public class BattleShot
 	public GameObject _theShot;
 	public float _timeBetweenShots, _shotCounter;
 	public Transform _firePoint;
+}
+
+[System.Serializable]
+public class BattlePhase
+{
+	public BattleShot[] _phaseShots;
+	public int _healthToEndPhase;
+	public GameObject _removeAtPhaseEnd, _addAtPhaseEnd;
+	public Transform _newSpawnPoint;
 }
