@@ -29,8 +29,11 @@ public class WaveManager : MonoBehaviour
 
 	void Start()
 	{
-		_timeToNextWave = _waves[_currentWave]._timeToSpawn;
-		_canSpawnWaves = true;
+		if(_waves.Length > 0)
+		{
+			_timeToNextWave = _waves[_currentWave]._timeToSpawn;
+			_canSpawnWaves = true;
+		}
 	}
 
 	void Update()

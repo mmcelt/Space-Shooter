@@ -812,19 +812,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acf092a4e151c864bbc2ee87ba4ce4fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currentHealth: 100
+  _currentHealth: 10
   _bossName: Megaladork
-  _shotsToFire:
-  - _theShot: {fileID: 4168970892374825757, guid: 31b2dc0d65ae79c4c9deddaeaeeeb9b8,
+  _phases:
+  - _phaseShots:
+    - _theShot: {fileID: 4168970892374825757, guid: 31b2dc0d65ae79c4c9deddaeaeeeb9b8,
+        type: 3}
+      _timeBetweenShots: 1
+      _shotCounter: 0.5
+      _firePoint: {fileID: 808409836}
+    - _theShot: {fileID: 4168970892374825757, guid: 31b2dc0d65ae79c4c9deddaeaeeeb9b8,
+        type: 3}
+      _timeBetweenShots: 1
+      _shotCounter: 0
+      _firePoint: {fileID: 2102322361}
+    _healthToEndPhase: 5
+    _removeAtPhaseEnd: {fileID: 7399879280478954462}
+    _addAtPhaseEnd: {fileID: 738649183423707362, guid: ee6bb62a99f01a44ea4e9f0fdfc376a0,
       type: 3}
-    _timeBetweenShots: 1
-    _shotCounter: 0.5
-    _firePoint: {fileID: 808409836}
-  - _theShot: {fileID: 4168970892374825757, guid: 31b2dc0d65ae79c4c9deddaeaeeeb9b8,
-      type: 3}
-    _timeBetweenShots: 1
-    _shotCounter: 0
-    _firePoint: {fileID: 2102322361}
+    _newSpawnPoint: {fileID: 7399879280478954463}
+  - _phaseShots:
+    - _theShot: {fileID: 4168970892374825757, guid: 31b2dc0d65ae79c4c9deddaeaeeeb9b8,
+        type: 3}
+      _timeBetweenShots: 0.75
+      _shotCounter: 0.375
+      _firePoint: {fileID: 808409836}
+    - _theShot: {fileID: 4168970892374825757, guid: 31b2dc0d65ae79c4c9deddaeaeeeb9b8,
+        type: 3}
+      _timeBetweenShots: 0.75
+      _shotCounter: 0
+      _firePoint: {fileID: 2102322361}
+    _healthToEndPhase: 0
+    _removeAtPhaseEnd: {fileID: 0}
+    _addAtPhaseEnd: {fileID: 0}
+    _newSpawnPoint: {fileID: 0}
+  _currentPhase: 0
+  _bossAnim: {fileID: 7399879279272248091}
 --- !u!114 &7399879280027751236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1094,10 +1117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e2af4d9330e5314aaccdb5cb0fc8411, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _waves:
-  - _timeToSpawn: 1
-    _theWave: {fileID: 3098767599973445648, guid: 31fd3932583698d409da6ffecce51779,
-      type: 3}
+  _waves: []
   _currentWave: 0
   _timeToNextWave: 0
   _canSpawnWaves: 0

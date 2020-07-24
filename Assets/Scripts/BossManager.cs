@@ -53,7 +53,27 @@ public class BossManager : MonoBehaviour
 
 		if(_currentHealth<= _phases[_currentPhase]._healthToEndPhase)
 		{
+			if(_phases[_currentPhase]._removeAtPhaseEnd != null)
+				_phases[_currentPhase]._removeAtPhaseEnd.SetActive(false);
+			if (_phases[_currentPhase]._addAtPhaseEnd != null)
+				Instantiate(_phases[_currentPhase]._addAtPhaseEnd, _phases[_currentPhase]._newSpawnPoint.position, Quaternion.identity);
 
+			_currentPhase++;
+
+			_bossAnim.SetInteger("Phase", _currentPhase + 1);
+		}
+		else
+		{
+			for (int i = 0; i < _phases[_currentPhase]._phaseShots.Length; i++)
+			{
+				_phases[_currentPhase]._phaseShots[i]._shotCounter -= Time.deltaTime;
+
+				if (_phases[_currentPhase]._phaseShots[i]._shotCounter <= 0)
+				{
+					_phases[_currentPhase]._phaseShots[i]._shotCounter = _phases[_currentPhase]._phaseShots[i]._timeBetweenShots;
+					Instantiate(_phases[_currentPhase]._phaseShots[i]._theShot, _phases[_currentPhase]._phaseShots[i]._firePoint.position, _phases[_currentPhase]._phaseShots[i]._firePoint.rotation);
+				}
+			}
 		}
 	}
 	#endregion
