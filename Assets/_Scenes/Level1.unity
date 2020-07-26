@@ -1314,7 +1314,7 @@ PrefabInstance:
     - target: {fileID: 8158280666012693870, guid: 087b23c8ee9648b4f9cc9aa115215d7c,
         type: 3}
       propertyPath: _waves.Array.size
-      value: 15
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8158280666012693870, guid: 087b23c8ee9648b4f9cc9aa115215d7c,
         type: 3}
@@ -1331,7 +1331,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _waves.Array.data[5]._theWave
       value: 
-      objectReference: {fileID: 2525644358071362424, guid: de2fde71e31ced642907a0a3c924fb8c,
+      objectReference: {fileID: 3098767599973445648, guid: 31fd3932583698d409da6ffecce51779,
         type: 3}
     - target: {fileID: 8158280666012693870, guid: 087b23c8ee9648b4f9cc9aa115215d7c,
         type: 3}

@@ -55,6 +55,7 @@ public class WaveManager : MonoBehaviour
 					//end of level?
 					_canSpawnWaves = false;
 					Debug.Log("Out of Waves!");
+					StartCoroutine(EndLevelRoutine());
 				}
 			}
 		}
@@ -74,7 +75,11 @@ public class WaveManager : MonoBehaviour
 
 	#region Private Methods
 
-
+	IEnumerator EndLevelRoutine()
+	{
+		yield return new WaitForSeconds(5f);
+		StartCoroutine(GameManager.Instance.EndLevelRoutine());
+	}
 	#endregion
 }
 
