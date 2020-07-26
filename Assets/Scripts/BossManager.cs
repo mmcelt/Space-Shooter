@@ -12,11 +12,15 @@ public class BossManager : MonoBehaviour
 	[SerializeField] string _bossName;
 	//SerializeField] BattleShot[] _shotsToFire;
 	[SerializeField] BattlePhase[] _phases;
+	[SerializeField] GameObject _bossExplosion;
+	[SerializeField] Transform _theBoss;
 
-	[SerializeField] int _currentPhase;
+	[SerializeField] int _currentPhase, _scoreValue = 5000;
+	[SerializeField] bool _battleEnding;
+	[SerializeField] float _timeToExplosionEnd, _waitToEndLevel;
 
 	[SerializeField] Animator _bossAnim;
-
+	
 	#endregion
 
 	#region MonoBehaviour Methods
@@ -51,7 +55,9 @@ public class BossManager : MonoBehaviour
 		//	}
 		//}
 
-		if(_currentHealth<= _phases[_currentPhase]._healthToEndPhase)
+		if (_battleEnding) return;
+
+		if(_currentHealth <= _phases[_currentPhase]._healthToEndPhase)
 		{
 			if(_phases[_currentPhase]._removeAtPhaseEnd != null)
 				_phases[_currentPhase]._removeAtPhaseEnd.SetActive(false);
@@ -86,16 +92,32 @@ public class BossManager : MonoBehaviour
 		_currentHealth = Mathf.Max(0, _currentHealth);
 		UIManager.Instance._bossHealthbar.value = _currentHealth;
 
-		if (_currentHealth == 0)
+		if (_currentHealth == 0 && !_battleEnding)
 		{
-			Destroy(gameObject);
-			UIManager.Instance._bossHealthbar.gameObject.SetActive(false);
+			//Destroy(gameObject);
+			//UIManager.Instance._bossHealthbar.gameObject.SetActive(false);
+			_battleEnding = true;
+
+			StartCoroutine(EndBattleRoutine());
 		}
 	}
 	#endregion
 
 	#region Private Methods
 
+	IEnumerator EndBattleRoutine()
+	{
+		UIManager.Instance._bossHealthbar.gameObject.SetActive(false);
+		Instantiate(_bossExplosion, _theBoss.position, Quaternion.identity);
+		_bossAnim.enabled = false;
+		GameManager.Instance.UpdateScore(_scoreValue);
+
+		yield return new WaitForSeconds(_timeToExplosionEnd);
+		_theBoss.gameObject.SetActive(false);
+
+		yield return new WaitForSeconds(_waitToEndLevel);
+		StartCoroutine(GameManager.Instance.EndLevelRoutine());
+	}
 	void FireShot()
 	{
 
